@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+  web:
+    build: 
+      context: app
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./sockets:/sockets
+
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+
+  server:
+    build: server
+    ports:
+      - 80:80
+    volumes:
+      - ./sockets:/sockets
+
+  db_udate:
+    build:
+      context: db_update
+    env_file: db_update/.env
+
+    ports:
+      - "3307:3307"
+
+
