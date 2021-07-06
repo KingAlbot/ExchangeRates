@@ -41,16 +41,15 @@ def get_exchange_rates(date, currency):
         return {'error':f'no exchange rates for this currency, available exchange rates: {",".join(currencies)}'}, 404
 
 
-    #need to check empty query
-    exchange_rates = eur_exchange_rates.query.filter_by(date=date).filter_by(base=currency)
+    exchange_rates_query = exchange_rates.query.filter_by(date=date).filter_by(base=currency)
 
-    if exchange_rates.first() is None:
+    if exchange_rates_query.first() is None:
         return {'error':'no entry found. Service started: ' + service_startdate}
 
     response = dict()
     response["base"] = currency
     response["date"] = date
-    for i in exchange_rates:
+    for i in exchange_rates_query:
         response[i.currency] = i.currency_value
 
      
@@ -63,6 +62,5 @@ def page_not_found(error):
 
 
 if __name__ == "__main__":
-    db.creat_all()
     app.run(debug=False, host='0.0.0.0', port=80)
 
