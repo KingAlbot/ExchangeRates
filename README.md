@@ -17,7 +17,7 @@ export MYSQL_USER_PASSWORD="<USER_PASSWORD>";
 export MYSQL_ROOT_PASSWORD="<ROOT_PASSWORD>";
 export MYSQL_DATABASE="<DATABASE>";
 ```
-#### _Запустите_
+#### _Добавление переменных окружения_
 ```sh
 . app/env_vars.sh
 . db_update/env_vars.sh
