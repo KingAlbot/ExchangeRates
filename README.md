@@ -17,7 +17,7 @@ export MYSQL_USER_PASSWORD="<USER_PASSWORD>";
 export MYSQL_ROOT_PASSWORD="<ROOT_PASSWORD>";
 export MYSQL_DATABASE="<DATABASE>";
 ```
-Запустите
+#### _Запустите_
 ```sh
 . app/env_vars.sh
 . db_update/env_vars.sh
@@ -27,7 +27,7 @@ export MYSQL_DATABASE="<DATABASE>";
 ```sh
 pip3 install -r requirements.txt
 ```
-Python Interpreter
+#### _Python Interpreter_
 ```python
 >>> from app.app import db
 >>> db.create_all()
