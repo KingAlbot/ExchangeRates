@@ -27,12 +27,13 @@ export MYSQL_DATABASE="<DATABASE>";
 ```sh
 pip3 install -r requirements.txt
 ```
-#### _Запуск проекта_
 Python Interpreter
 ```python
 >>> from app.app import db
 >>> db.create_all()
 ```
+#### _Запуск проекта_
+
 ````sh
 sudo chmod +x db_update/daily_db_update.py
 nohup db_update/daily_db_update.py &
