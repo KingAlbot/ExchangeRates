@@ -52,7 +52,7 @@ def db_exchange_rate_insert(date, base, currency, currency_value):
     connection = pymysql.connect(host='0.0.0.0',
                             database=os.getenv('MYSQL_DATABASE'),
                             user=os.getenv('MYSQL_USER_NAME'),
-                            password=os.getenv('MYSQL_ROOT_PASSWORD'),
+                            password=os.getenv('MYSQL_USER_PASSWORD'),
                             cursorclass=pymysql.cursors.DictCursor)
 
     with connection:
@@ -101,6 +101,9 @@ def update_exchangerates_db():
 if __name__ == "__main__":
 
     update_exchangerates_db()
+
+    mysql_command = f"mysql -u {os.getenv('MYSQL_USER_NAME')} --password={os.getenv('MYSQL_USER_PASSWORD')} {os.getenv('MYSQL_DATABASE')} < events_table.sql"
+    os.system(mysql_command)
     x=datetime.today()
     y=x.replace(day=x.day+1, hour=9, minute=0, second=0, microsecond=0)
     delta_t=y-x

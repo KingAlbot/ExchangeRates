@@ -32,5 +32,4 @@ pip3 install -r requirements.txt
 ````sh
 flask db init
 flask run
-
 ```
